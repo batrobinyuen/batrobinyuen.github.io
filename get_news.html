@@ -1,0 +1,24 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<?php
+		mysql_connect("localhost", "root", "password") or die (mysql_error ());
+
+		mysql_select_db("newssql") or die(mysql_error());
+
+		$strSQL = "SELECT * FROM news";
+
+
+		$rs = mysql_query($strSQL);
+
+
+		while($row = mysql_fetch_array($rs)) {
+		echo	"<li><a target='_self' href='".$row["Link"]."'><h4>".$row['Title']."</h4><p>" . $row['Text'] . "</p></a></li>";
+	}
+
+		// Close the database connection
+		mysql_close();
+		?>
+</body>
+</html>
